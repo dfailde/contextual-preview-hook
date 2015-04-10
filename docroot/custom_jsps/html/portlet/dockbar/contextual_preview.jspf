@@ -1,9 +1,9 @@
 <style type="text/css">
 	
-	.page-preview-controls.page-preview-controls-enabled > a{
+	.page-preview-controls.page-preview-controls-enabled a{
 		background: #92f545 !important;
 	}
-	.page-preview-controls.page-preview-controls-disabled > a{
+	.page-preview-controls.page-preview-controls-disabled a{
 		background: #f5af45 !important;
 	}
 	.page-preview-controls.page-preview-controls-enabled .icon-preview:before {
@@ -26,11 +26,11 @@ String label = "";
 if (preview){
 	currentPageURL = HttpUtil.removeParameter(currentPageURL, "preview");
 	cssClass = "page-preview-controls page-preview-controls-enabled";
-	label = "Disable page previem mode"
+	label = "Disable page previem mode";
 }else{
 	currentPageURL = HttpUtil.setParameter(currentPageURL, "preview", true);
 	cssClass = "page-preview-controls page-preview-controls-disabled";
-	label = "Enable page previem mode"
+	label = "Enable page previem mode";
 }
 %>
 
