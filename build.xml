@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<project name="contextual-preview-hook" basedir="." default="deploy">
+	
+	<condition property="ruta.build.common" value="${ruta.hooks.sdk}/build-common-hook.xml" else="../build-common-hook.xml">
+		<isset property="ruta.hooks.sdk"/>
+	</condition>
+
+	<import file="${ruta.build.common}" />
+</project>

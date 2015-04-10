@@ -1,0 +1,43 @@
+<style type="text/css">
+	
+	.page-preview-controls.page-preview-controls-enabled > a{
+		background: #92f545 !important;
+	}
+	.page-preview-controls.page-preview-controls-disabled > a{
+		background: #f5af45 !important;
+	}
+	.page-preview-controls.page-preview-controls-enabled .icon-preview:before {
+		content: url(/html/portlet/dockbar/icons/preview.png) !important;
+	}
+	.page-preview-controls.page-preview-controls-disabled .icon-preview:before {
+		content: url(/html/portlet/dockbar/icons/preview_disabled.png) !important;
+	}
+</style>
+
+<%
+boolean hasPermission = permissionChecker.hasPermission(
+		scopeGroupId, "com.liferay.portlet.journal.model.JournalArticle", scopeGroupId, "UPDATE");
+
+String currentPageURL = themeDisplay.getURLCurrent();
+boolean preview = ParamUtil.get(request, "preview", false);
+String cssClass = "";
+String label = "";
+
+if (preview){
+	currentPageURL = HttpUtil.removeParameter(currentPageURL, "preview");
+	cssClass = "page-preview-controls page-preview-controls-enabled";
+	label = "Disable page previem mode"
+}else{
+	currentPageURL = HttpUtil.setParameter(currentPageURL, "preview", true);
+	cssClass = "page-preview-controls page-preview-controls-disabled";
+	label = "Enable page previem mode"
+}
+%>
+
+<c:if test="<%= hasPermission %>">
+	
+	<aui:nav-item anchorId="pagePreviewModePanel" cssClass="<%= cssClass %>"
+		href="<%= currentPageURL %>" iconCssClass="icon-preview" 
+		label="<%= label %>" />
+	
+</c:if>
